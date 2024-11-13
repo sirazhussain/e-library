@@ -11,11 +11,13 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.96",
     "typescript": "^5.6.3"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "mongoose": "^8.8.1",
     "nodemon": "^3.1.7"
   }
 }
