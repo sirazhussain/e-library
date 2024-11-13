@@ -1,6 +1,6 @@
-import Express from "express";
+import express from "express";
 
-const app = Express();
+const app = express();
 
 // Define the routes below
 
@@ -12,5 +12,7 @@ app.get("/", (req, res, next) => {
   res.json({ message: "hello msg" });
 });
 
-// Export the app instance to be used in other files
+// Global error handler
+// app.use(globalErrorHandler);
+
 export default app;
