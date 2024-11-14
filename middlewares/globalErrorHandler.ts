@@ -1,8 +1,20 @@
-import { Request, Response, NextFunction } from "express";
+// src/middleware/globalErrorHandler.ts
+import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
+import { HttpError } from "http-errors";
+import { config } from "../src/config/config";
 
-function globalErrorHandler(err: any, req: Request, res: Response, next: NextFunction) {
-  // Handle the error
-  res.status(500).json({ error: err.message || "Internal Server Error" });
-}
+const globalErrorHandler: ErrorRequestHandler = (
+  err: HttpError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
+  const statusCode = err.statusCode || 500;
 
-export default globalErrorHandler; 
+  res.status(statusCode).json({
+    message: err.message,
+    errorStack: config.env === "development" ? err.stack : "",
+  });
+};
+
+export default globalErrorHandler;

@@ -1,6 +1,10 @@
 import express from "express";
+import userRouter from "./user/userRoute";
+import globalErrorHandler from "../middlewares/globalErrorHandler";
 
 const app = express();
+
+app.use(express.json());
 
 // Define the routes below
 
@@ -12,7 +16,11 @@ app.get("/", (req, res, next) => {
   res.json({ message: "hello msg" });
 });
 
+app.use("/api/users", userRouter);
+
 // Global error handler
-// app.use(globalErrorHandler);
+
+// Error handling middleware (placed at the end)
+app.use(globalErrorHandler);
 
 export default app;
