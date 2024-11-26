@@ -10,6 +10,8 @@ const _config = {
   dbUrl: process.env.MONGO_CONNECTION,       // Example database URI
   apiKey: process.env.API_KEY,     // Example API key
   env: process.env.NODE_ENV,
+
+  jwtSecret: process.env.JWT_SECRET,
 };
 
 // Freeze the configuration object to prevent further modifications
